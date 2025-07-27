@@ -47,5 +47,27 @@
       <a href="https://twitter.com" target="_blank">Twitter</a>
     </div>
   </footer>
+  <script>
+    const footer = document.querySelector("footer");
+
+    function updateFooterVisibility() {
+      const scrollTop = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const bodyHeight = document.body.scrollHeight;
+
+      const atTop = scrollTop <= 10;
+      const atBottom = scrollTop + windowHeight >= bodyHeight - 10;
+
+      if (atBottom) {
+        footer.classList.remove("hidden-footer");
+      } else {
+        footer.classList.add("hidden-footer");
+      }
+    }
+
+    window.addEventListener("scroll", updateFooterVisibility);
+    window.addEventListener("resize", updateFooterVisibility);
+    document.addEventListener("DOMContentLoaded", updateFooterVisibility);
+  </script>
 </body>
 </html>

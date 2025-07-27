@@ -319,3 +319,13 @@ footer .socials a {
     max-width: 300px;
   }
 }
+
+footer {
+  transition: opacity 0.3s ease;
+  opacity: 1;
+}
+
+footer.hidden-footer {
+  opacity: 0;
+  pointer-events: none;
+}
