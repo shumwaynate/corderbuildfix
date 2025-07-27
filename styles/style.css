@@ -1,75 +1,321 @@
-/* Reset some defaults */
+:root {
+  --primary-green: #4CAF50;
+  --secondary-green: #388E3C;
+  --light-gray: #f9f9f9;
+  --dark-gray: #333;
+}
+
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  overflow-x: hidden;
 }
 
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #f8f9fa;
-  color: #333;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+
+body {
+  font-family: Arial, sans-serif;
   line-height: 1.6;
-  padding: 0;
-  margin: 0;
-}
-
-header {
-  background-color: #3B7A57;
-  color: white;
-  padding: 2rem 1rem;
+  background-color: var(--light-gray);
+  display: flex;
+  flex-direction: column;
   text-align: center;
+  padding-top: 20px;
 }
 
-#logo {
-  max-width: 100px;
-  margin-bottom: 1rem;
+/* Sticky header */
+header {
+  background-color: var(--primary-green);
+  color: white;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
 }
 
-.container {
-  max-width: 800px;
-  margin: auto;
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
+.logo {
+  height: 90px;
+  width: auto;
+}
+
+
+/* Adjust space for header height */
+.header-space {
+  height: 100px;
+}
+
+/* Sticky footer */
+footer {
+  background-color: #222;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  z-index: 100;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+/* Adjust space for footer height */
+.footer-space {
+  height: 60px;
+}
+
+/* Sidebar */
+.sidebar {
+  background-color: var(--secondary-green);
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  left: 0;
+  width: 200px;
+  padding: 1rem;
+  overflow-y: auto;
+  display: none;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 1;
+  padding-top: 130px; /* space for header */
+
+}
+
+.sidebar a {
+  background-color: var(--dark-gray);
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  transition: background-color 0.3s;
+}
+
+.sidebar a:hover {
+  background-color: black;
+}
+
+
+/* Main content */
 main {
-  padding: 2rem 1rem;
+  margin-left: 0;
+  padding: 1rem;
+  padding-top: 10px;
+  padding-bottom: 100px;
+  flex: 1;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: calc(100vh - 160px); /* header + footer */
+  max-width: 100%;
+  /* margin-bottom: 100px; */
 }
 
-.intro, .cta {
-  max-width: 800px;
-  margin: 2rem auto;
+h2 {
+  margin: 1rem 0 0.5rem;
+  justify-self: center;
+}
+
+.job-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.job-card {
   background-color: white;
-  padding: 2rem;
+  padding: 1rem;
+  border: 2px solid var(--primary-green);
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  width: 280px;
+  box-sizing: border-box;
 }
 
-h1, h2 {
-  color: #264653;
-  margin-bottom: 1rem;
-}
 
-p {
-  margin-bottom: 1rem;
+
+
+.job-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
 }
 
 .button {
   display: inline-block;
-  padding: 0.75rem 1.5rem;
-  background-color: #2a9d8f;
+  background-color: var(--primary-green);
   color: white;
+  padding: 0.5rem 1rem;
   text-decoration: none;
+  margin-top: 0.5rem;
   border-radius: 5px;
-  transition: background 0.3s ease;
 }
 
-.button:hover {
-  background-color: #21867a;
+footer .socials a {
+  color: white;
+  margin-left: 1rem;
+  text-decoration: none;
 }
 
-footer {
-  text-align: center;
+/* Responsive */
+@media (min-width: 768px) {
+  .top-nav {
+    display: none;
+  }
+
+  .sidebar {
+    display: flex;
+  }
+
+  main {
+    margin-left: 200px;
+  }
+}
+
+@media (min-width: 768px) {
+  .top-nav {
+    display: none;
+  }
+
+  .sidebar {
+    display: flex;
+  }
+
+  main {
+    margin-left: 0;
+    width: calc(100% - 200px); /* sidebar width */
+    max-width: calc(100% - 200px);
+    margin-left: 200px;
+  }
+}
+
+
+/* Portfolio-specific styles */
+.job-card.full-width {
+  margin: 2rem auto;
   padding: 1rem;
-  background-color: #ddd;
-  font-size: 0.9rem;
+  box-sizing: border-box;
+  border: 2px solid var(--primary-green);
+  border-radius: 8px;
+  background-color: white;
+  width: 100%;
+  max-width: 800px;
+  min-width: 300px;
+}
+
+
+.gallery-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.image-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 600px;
+  aspect-ratio: 4 / 3;
+  margin: auto;
+}
+
+.gallery-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.gallery-nav {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  z-index: 2;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: background-color 0.3s;
+}
+
+.gallery-nav.left {
+  left: 0;
+}
+
+.gallery-nav.right {
+  right: 0;
+}
+
+.gallery-nav:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.top-nav {
+  display: none;
+  gap: 0.5rem;
+}
+
+@media (max-width: 767px) {
+  header {
+    flex-direction: column;
+    align-items: center;
+    /* padding-bottom: 100px; */
+  }
+  main{
+    padding-top: 120px; /* space for header */
+    padding-bottom: 40px; /* space for footer */
+  }
+
+  .header-left {
+    justify-content: center;
+  }
+
+  .top-nav {
+    display: flex;
+    flex-direction: column 2;
+    width: 100%;
+    align-items: center;
+    margin-top: 0.5rem;
+  }
+
+  .top-nav a {
+    background-color: var(--dark-gray);
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    text-align: center;
+    width: 90%;
+    max-width: 300px;
+  }
 }
