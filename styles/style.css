@@ -39,7 +39,7 @@ header {
   padding: 1rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: left;
   position: fixed;
   top: 0;
   left: 0;
@@ -56,6 +56,11 @@ header {
 .logo {
   height: 90px;
   width: auto;
+  padding-right: 40px;
+  padding-left: 40px;
+}
+.site-title {
+  font-size: 50px;
 }
 
 
@@ -123,7 +128,7 @@ main {
   margin-left: 0;
   padding: 1rem;
   padding-top: 10px;
-  padding-bottom: 100px;
+  padding-bottom: 40px;
   flex: 1;
   box-sizing: border-box;
   width: 100%;
@@ -337,7 +342,8 @@ footer.hidden-footer {
   background-color: white;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   border-radius: 8px;
-  max-width: 1200px;
+  max-width: 700px;
+  border: 2px solid var(--primary-green);
 }
 
 #finished-products h2 {
@@ -346,16 +352,18 @@ footer.hidden-footer {
 
 .finished-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(2, 1fr); /* exactly 2 columns */
   gap: 0.5rem;
 }
 
 .finished-grid img {
   width: 100%;
-  height: auto;
+  height: 200px; /* fixed uniform height */
+  object-fit: contain; /* maintain ratio without stretching */
   border-radius: 4px;
-  object-fit: cover;
 }
+
+
 
 .see-finished-btn {
   margin-top: 1rem;
@@ -370,4 +378,145 @@ footer.hidden-footer {
 
 .see-finished-btn:hover {
   background-color: var(--secondary-green);
+}
+
+/* Portfolio-specific styles favorites */
+/* Favorite Works card with green outline */
+.card-green-outline {
+  border: 3px solid var(--primary-green, #4CAF50);
+  border-radius: 10px;
+  background: #fff;
+  padding: 1rem;
+  margin: 1.5rem auto;
+  max-width: 1200px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+.card-green-outline h2 {
+  margin: 0 0 0.75rem 0;
+  text-align: left;
+}
+
+/* Center-focused gallery */
+.key-gallery {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.5rem;
+}
+.key-gallery .nav {
+  border: none;
+  background: var(--primary-green, #4CAF50);
+  color: #fff;
+  font-size: 1.6rem;
+  line-height: 1;
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  cursor: pointer;
+  user-select: none;
+}
+.key-gallery .nav:disabled { opacity: 0.5; cursor: default; }
+.key-gallery .nav:focus { outline: 2px solid #00000033; outline-offset: 2px; }
+
+.key-stage {
+  position: relative;
+  height: clamp(260px, 55vh, 620px);
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+}
+
+/* Three frames: prev, hero, next */
+.key-frame {
+  position: absolute;
+  transition: transform 350ms ease, opacity 350ms ease;
+  display: grid;
+  place-items: center;
+  will-change: transform, opacity;
+}
+.key-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* no stretching */
+  border-radius: 10px;
+}
+
+/* Sizing/placement */
+:root {
+  --hero-w: min(70%, 950px);
+  --hero-h: 100%;
+  --side-scale: 0.7;
+  --side-offset: 52%;
+}
+
+.key-frame.hero {
+  width: var(--hero-w);
+  height: var(--hero-h);
+  max-height: 100%;
+  transform: translateX(0) scale(1);
+  z-index: 3;
+}
+.key-frame.prev,
+.key-frame.next {
+  width: var(--hero-w);
+  height: var(--hero-h);
+  max-height: 100%;
+  transform: translateX(0) scale(var(--side-scale));
+  opacity: 0.85;
+  z-index: 2;
+}
+.key-frame.prev { transform: translateX(calc(-1 * var(--side-offset))) scale(var(--side-scale)); }
+.key-frame.next { transform: translateX(var(--side-offset)) scale(var(--side-scale)); }
+
+/* Soft vignette on side images */
+.key-frame.prev::after,
+.key-frame.next::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.12), rgba(0,0,0,0.25));
+  pointer-events: none;
+}
+
+/* Side frames are clickable */
+.key-frame.prev,
+.key-frame.next { cursor: pointer; }
+
+/* Dots */
+.key-dots {
+  display: flex;
+  gap: 0.4rem;
+  justify-content: center;
+  margin-top: 0.75rem;
+  flex-wrap: wrap;
+}
+.key-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #cfd8dc;
+  border: 1px solid #90a4ae;
+  cursor: pointer;
+}
+.key-dot.active {
+  background: var(--secondary-green, #388E3C);
+  border-color: var(--secondary-green, #388E3C);
+}
+
+/* Responsive */
+@media (max-width: 780px) {
+  :root {
+    --hero-w: 90%;
+    --side-offset: 60%;
+    --side-scale: 0.6;
+  }
+  .key-gallery {
+    grid-template-columns: 1fr; /* stack arrows on small screens */
+  }
+  .key-gallery .nav {
+    order: 3;
+    justify-self: center;
+    margin-top: 0.5rem;
+  }
 }
