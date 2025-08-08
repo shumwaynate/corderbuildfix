@@ -1,9 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Load Finished Products from GitHub Contents API (public repo required)
-  loadFinishedProductsFromGitHub({
-    owner: "shumwaynate",
-    repo: "corderbuildfix",
-    dirPath: "images/KeyPictures",
+  // Load Finished Products from a local manifest JSON (served by your site)
+  loadFinishedProductsFromManifest({
+    manifestUrl: "images/KeyPictures/index.json", // same-origin file
+    basePath: "images/KeyPictures/",
     maxToShow: 4
   });
 
@@ -30,30 +29,27 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /**
- * Fetches file list from GitHub Contents API and renders up to maxToShow random images
- * from the given directory. Works with any filenames (e.g., "door.jpg", "big room.jpg").
- * Requires the repository to be public.
+ * Loads filenames from a local JSON manifest and renders up to maxToShow random images.
+ * Manifest shape:
+ * { "files": ["door.jpg", "big room.jpg", "kitchen.png", ...] }
  */
-async function loadFinishedProductsFromGitHub({ owner, repo, dirPath, maxToShow = 4 }) {
+async function loadFinishedProductsFromManifest({ manifestUrl, basePath, maxToShow = 4 }) {
   const finishedGrid = document.querySelector(".finished-grid");
   if (!finishedGrid) return;
 
-  finishedGrid.innerHTML = ""; // clear
-
-  const apiUrl = `https://api.github.com/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}/contents/${encodeURIComponent(dirPath)}`;
+  finishedGrid.innerHTML = "";
 
   try {
-    const res = await fetch(apiUrl, {
-      headers: { "Accept": "application/vnd.github+json" },
-      cache: "no-store"
-    });
+    const res = await fetch(manifestUrl, { cache: "no-store" });
+    if (!res.ok) throw new Error(`Manifest fetch failed: ${res.status}`);
+    const data = await res.json();
 
-    if (!res.ok) throw new Error(`GitHub API error: ${res.status}`);
+    const files = Array.isArray(data)
+      ? data // support plain array too
+      : Array.isArray(data.files) ? data.files : [];
 
-    const items = await res.json();
-    // Filter for image files
-    const images = (Array.isArray(items) ? items : [])
-      .filter(it => it.type === "file" && /\.(jpe?g|png|webp|gif)$/i.test(it.name));
+    // Filter image-ish files
+    const images = files.filter(name => /\.(jpe?g|png|webp|gif)$/i.test(name));
 
     if (images.length === 0) {
       const msg = document.createElement("p");
@@ -62,20 +58,18 @@ async function loadFinishedProductsFromGitHub({ owner, repo, dirPath, maxToShow 
       return;
     }
 
-    // Shuffle and take up to maxToShow
     const selected = shuffle(images).slice(0, Math.min(maxToShow, images.length));
 
-    selected.forEach(file => {
+    selected.forEach(name => {
       const img = document.createElement("img");
-      // Prefer download_url from API
-      img.src = file.download_url;
+      img.src = `${basePath}${name}`;
       img.alt = "Finished product";
       img.loading = "lazy";
       img.decoding = "async";
       finishedGrid.appendChild(img);
     });
   } catch (err) {
-    console.error("Failed to load KeyPictures:", err);
+    console.error("Failed to load Finished Products manifest:", err);
     const msg = document.createElement("p");
     msg.textContent = "Finished product photos unavailable right now.";
     finishedGrid.appendChild(msg);
