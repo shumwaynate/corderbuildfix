@@ -7,8 +7,6 @@
   <link rel="stylesheet" href="styles/style.css" />
 </head>
 <body>
-  <div class="header-space"></div>
-
   <header>
     <img src="images/CorderColor.PNG" alt="Corder Build & Fix Logo" class="logo" />
     <h1 class="site-title">Corder Build & Fix</h1>
@@ -19,51 +17,50 @@
       <a href="about.html">About the Builder</a>
     </nav>
   </header>
-  <aside class="sidebar">
-    <a href="index.html">Home</a>
-    <a href="schedule.html">Schedule & Contact</a>
-    <a href="portfolio.html">Portfolio</a>
-    <a href="about.html">About the Builder</a>
-  </aside>
 
-  <main>
-    <h2>About the Builder</h2>
-    <section class="builder-profile">
-      <img src="images/paul.jpg" alt="Photo of Paul" style="width:200px; border-radius: 12px;" />
-      <div>
-        <h3>Paul - Lead Handyman</h3>
-        <p>Paul has over 4 years of experience in general construction, home repairs, and custom carpentry. He takes pride in delivering honest, detail-focused work and has built a reputation for reliability and high-quality results. Whether it's fixing a leaky faucet or building a backyard deck, Paul approaches each job with care and craftsmanship.</p>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="sidebar-inner">
+        <a href="index.html">Home</a>
+        <a href="schedule.html">Schedule & Contact</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="about.html">About the Builder</a>
       </div>
-    </section>
-    <div class="footer-space"></div>
-  </main>
+    </aside>
+
+    <main>
+      <h2>About the Builder</h2>
+      <section class="builder-profile">
+        <img src="images/paul.jpg" alt="Photo of Paul" style="width:200px; border-radius: 12px;" />
+        <div>
+          <h3>Paul - Lead Handyman</h3>
+          <p>Paul has over 4 years of experience in general construction, home repairs, and custom carpentry. He takes pride in delivering honest, detail-focused work and has built a reputation for reliability and high-quality results. Whether it's fixing a leaky faucet or building a backyard deck, Paul approaches each job with care and craftsmanship.</p>
+        </div>
+      </section>
+
+      <div class="footer-space"></div>
+    </main>
+  </div>
 
   <footer>
     <p>&copy; 2025 Corder Build & Fix</p>
     <div class="socials">
-      <a href="https://facebook.com" target="_blank">Facebook</a>
-      <a href="https://instagram.com" target="_blank">Instagram</a>
-      <a href="https://twitter.com" target="_blank">Twitter</a>
+      <a href="https://facebook.com" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://twitter.com" target="_blank" rel="noopener">Twitter</a>
     </div>
   </footer>
+
   <script>
     const footer = document.querySelector("footer");
-
     function updateFooterVisibility() {
       const scrollTop = window.scrollY;
       const windowHeight = window.innerHeight;
       const bodyHeight = document.body.scrollHeight;
-
-      const atTop = scrollTop <= 10;
       const atBottom = scrollTop + windowHeight >= bodyHeight - 10;
-
-      if (atBottom) {
-        footer.classList.remove("hidden-footer");
-      } else {
-        footer.classList.add("hidden-footer");
-      }
+      if (atBottom) footer.classList.remove("hidden-footer");
+      else footer.classList.add("hidden-footer");
     }
-
     window.addEventListener("scroll", updateFooterVisibility);
     window.addEventListener("resize", updateFooterVisibility);
     document.addEventListener("DOMContentLoaded", updateFooterVisibility);

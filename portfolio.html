@@ -9,7 +9,6 @@
   <script defer src="scripts/portfolio.js"></script>
 </head>
 <body>
-  <div class="header-space"></div>
   <header>
     <img src="images/CorderColor.PNG" alt="Corder Build & Fix Logo" class="logo" />
     <h1 class="site-title">Corder Build & Fix</h1>
@@ -20,69 +19,64 @@
       <a href="about.html">About the Builder</a>
     </nav>
   </header>
-  <aside class="sidebar">
-    <a href="index.html">Home</a>
-    <a href="schedule.html">Schedule & Contact</a>
-    <a href="portfolio.html">Portfolio</a>
-    <a href="about.html">About the Builder</a>
-  </aside>
 
-  <main>
-    <h2>Portfolio</h2>
-
-    <section id="favorite-works" class="card card-green-outline">
-      <h2>Here are Some of our favorite works!</h2>
-
-      <div class="key-gallery" aria-label="Key pictures gallery">
-        <button class="nav prev" aria-label="Previous image" title="Previous">‹</button>
-
-        <div class="key-stage" id="keyStage" aria-live="polite"></div>
-
-        <button class="nav next" aria-label="Next image" title="Next">›</button>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="sidebar-inner">
+        <a href="index.html">Home</a>
+        <a href="schedule.html">Schedule & Contact</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="about.html">About the Builder</a>
       </div>
+    </aside>
 
-      <div class="key-dots" id="keyDots" aria-hidden="true"></div>
-    </section>
+    <main>
+      <h2>Portfolio</h2>
 
+      <section id="favorite-works" class="card card-green-outline">
+        <h2>Here are Some of our favorite works!</h2>
 
-    <h2>Here are some of the past jobs that we have done</h2>
-    <div id="portfolio-jobs"></div>
+        <div class="key-gallery" aria-label="Key pictures gallery">
+          <button class="nav prev" aria-label="Previous image" title="Previous">‹</button>
+          <div class="key-stage" id="keyStage" aria-live="polite"></div>
+          <button class="nav next" aria-label="Next image" title="Next">›</button>
+        </div>
 
-    <section>
+        <div class="key-dots" id="keyDots" aria-hidden="true"></div>
+      </section>
+
+      <h2>Here are some of the past jobs that we have done</h2>
+      <div id="portfolio-jobs"></div>
+
+      <section>
         <h2>Schedule a Consultation</h2>
         <p>Have a project in mind? Let’s talk!</p>
         <a class="button" href="schedule.html">Schedule Now</a>
-    </section>
+      </section>
 
-    <div class="footer-space"></div>
-  </main>
+      <div class="footer-space"></div>
+    </main>
+  </div>
 
   <footer>
     <p>&copy; 2025 Corder Build & Fix</p>
     <div class="socials">
-      <a href="https://facebook.com" target="_blank">Facebook</a>
-      <a href="https://instagram.com" target="_blank">Instagram</a>
-      <a href="https://twitter.com" target="_blank">Twitter</a>
+      <a href="https://facebook.com" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://twitter.com" target="_blank" rel="noopener">Twitter</a>
     </div>
   </footer>
+
   <script>
     const footer = document.querySelector("footer");
-
     function updateFooterVisibility() {
       const scrollTop = window.scrollY;
       const windowHeight = window.innerHeight;
       const bodyHeight = document.body.scrollHeight;
-
-      const atTop = scrollTop <= 10;
       const atBottom = scrollTop + windowHeight >= bodyHeight - 10;
-
-      if (atBottom) {
-        footer.classList.remove("hidden-footer");
-      } else {
-        footer.classList.add("hidden-footer");
-      }
+      if (atBottom) footer.classList.remove("hidden-footer");
+      else footer.classList.add("hidden-footer");
     }
-
     window.addEventListener("scroll", updateFooterVisibility);
     window.addEventListener("resize", updateFooterVisibility);
     document.addEventListener("DOMContentLoaded", updateFooterVisibility);

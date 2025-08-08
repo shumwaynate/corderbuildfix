@@ -9,95 +9,84 @@
   <script defer src="scripts/home.js"></script>
 </head>
 <body>
-  <div class="header-space"></div>
-
-  <header>
+  <header role="banner">
     <img src="images/CorderColor.PNG" alt="Corder Build & Fix Logo" class="logo" />
     <h1 class="site-title">Corder Build & Fix</h1>
-    <nav class="top-nav">
+    <nav class="top-nav" role="navigation" aria-label="Top navigation">
       <a href="index.html">Home</a>
       <a href="schedule.html">Schedule & Contact</a>
       <a href="portfolio.html">Portfolio</a>
       <a href="about.html">About the Builder</a>
     </nav>
   </header>
-  <aside class="sidebar">
-    <a href="index.html">Home</a>
-    <a href="schedule.html">Schedule & Contact</a>
-    <a href="portfolio.html">Portfolio</a>
-    <a href="about.html">About the Builder</a>
-  </aside>
 
-  <main>
-    <section>
-      <h2>Welcome!</h2>
-      <p>Need something fixed, built, or installed? We're here to help with honest and skilled handyman services. No job is too small.</p>
-    </section>
+  <div class="shell">
+    <aside class="sidebar" role="navigation" aria-label="Sidebar">
+      <div class="sidebar-inner">
+        <a href="index.html">Home</a>
+        <a href="schedule.html">Schedule & Contact</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="about.html">About the Builder</a>
+      </div>
+    </aside>
 
-    <section id="finished-products" class="card">
-      <h2>Finished Products</h2>
-      <div class="finished-grid"></div>
-      <button class="see-finished-btn" onclick="window.location.href='portfolio.html'">
-        See Finished Products
-      </button>
-    </section>
+    <main>
+      <section>
+        <h2>Welcome!</h2>
+        <p>Need something fixed, built, or installed? We're here to help with honest and skilled handyman services. No job is too small.</p>
+      </section>
 
+      <section id="finished-products" class="card">
+        <h2>Finished Products</h2>
+        <div class="finished-grid"></div>
+        <button class="see-finished-btn" onclick="window.location.href='portfolio.html'">
+          See Finished Products
+        </button>
+      </section>
 
-    <section id="featured-jobs">
-      <h2>Previous Projects</h2>
-      <div class="job-container" id="random-jobs"></div>
-      <a class="button" href="portfolio.html">See Our Work</a>
-    </section>
+      <section id="featured-jobs">
+        <h2>Previous Projects</h2>
+        <div class="job-container" id="random-jobs"></div>
+        <a class="button" href="portfolio.html">See Our Work</a>
+      </section>
 
-    <section>
-      <h2>Current Deal</h2>
-      <p>Do two jobs, get the next job 10% off!</p>
-      <a class="button" href="schedule.html">Schedule with Us</a>
-    </section>
+      <section>
+        <h2>Current Deal</h2>
+        <p>Do two jobs, get the next job 10% off!</p>
+        <a class="button" href="schedule.html">Schedule with Us</a>
+      </section>
 
-    <section>
-      <h2>Want to learn more about us?</h2>
-      <a class="button" href="about.html">About the Builder</a>
-    </section>
-    <div class="footer-space"></div>
+      <section>
+        <h2>Want to learn more about us?</h2>
+        <a class="button" href="about.html">About the Builder</a>
+      </section>
 
-  </main>
-<!-- 
-  <img src="images/fence.png" alt="Fence Repair" />
-  <img src="images/faucet.png" alt="Kitchen Faucet Installation" />
-  <img src="images/deck.png" alt="Deck Staining" />
-  <img src="images/fan.png" alt="Ceiling Fan Installation" /> -->
+      <div class="footer-space"></div>
+    </main>
+  </div>
 
   <footer>
     <p>&copy; 2025 Corder Build & Fix</p>
     <div class="socials">
-      <a href="https://facebook.com" target="_blank">Facebook</a>
-      <a href="https://instagram.com" target="_blank">Instagram</a>
-      <a href="https://twitter.com" target="_blank">Twitter</a>
+      <a href="https://facebook.com" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://twitter.com" target="_blank" rel="noopener">Twitter</a>
     </div>
   </footer>
+
   <script>
     const footer = document.querySelector("footer");
-
     function updateFooterVisibility() {
       const scrollTop = window.scrollY;
       const windowHeight = window.innerHeight;
       const bodyHeight = document.body.scrollHeight;
-
-      const atTop = scrollTop <= 10;
       const atBottom = scrollTop + windowHeight >= bodyHeight - 10;
-
-      if (atBottom) {
-        footer.classList.remove("hidden-footer");
-      } else {
-        footer.classList.add("hidden-footer");
-      }
+      if (atBottom) footer.classList.remove("hidden-footer");
+      else footer.classList.add("hidden-footer");
     }
-
     window.addEventListener("scroll", updateFooterVisibility);
     window.addEventListener("resize", updateFooterVisibility);
     document.addEventListener("DOMContentLoaded", updateFooterVisibility);
   </script>
-
 </body>
 </html>
