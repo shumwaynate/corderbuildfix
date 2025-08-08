@@ -329,3 +329,45 @@ footer.hidden-footer {
   opacity: 0;
   pointer-events: none;
 }
+
+/* Finished Products Section */
+#finished-products {
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  max-width: 1200px;
+}
+
+#finished-products h2 {
+  margin-bottom: 1rem;
+}
+
+.finished-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 0.5rem;
+}
+
+.finished-grid img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.see-finished-btn {
+  margin-top: 1rem;
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
+  color: white;
+  background-color: var(--primary-green);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.see-finished-btn:hover {
+  background-color: var(--secondary-green);
+}
