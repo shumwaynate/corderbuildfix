@@ -98,11 +98,12 @@
     // basic validation: require name, message, and at least one contact method
     document.getElementById("contact-form").addEventListener("submit", async function (e) {
       e.preventDefault();
+
       const name = document.getElementById("name").value.trim();
       const message = document.getElementById("message").value.trim();
       const phone = document.getElementById("phone").value.trim();
       const email = document.getElementById("email").value.trim();
-      const contactMethods = document.querySelectorAll("input[name='contactMethod']:checked");
+      const contactMethods = Array.from(document.querySelectorAll("input[name='contactMethod']:checked")).map(cb => cb.value);
 
       let formMessage = document.getElementById("form-message");
 
@@ -112,7 +113,7 @@
         return;
       }
       if (!phone && !email) {
-        formMessage.textContent = "Please provide at least one way to contact you (phone or email).";
+        formMessage.textContent = "Please provide at least one way to contact you.";
         formMessage.classList.add("error");
         return;
       }
@@ -122,14 +123,18 @@
         return;
       }
 
-       // 🔹 Send to Google Apps Script Web App
+      // ✅ Use FormData instead of JSON
+      const formData = new FormData();
+      formData.append("name", name);
+      formData.append("phone", phone);
+      formData.append("email", email);
+      formData.append("contactMethod", contactMethods.join(","));
+      formData.append("message", message);
+
       try {
         const response = await fetch("https://script.google.com/macros/s/AKfycbz59hT5Wf2Z9fyESQvdJxVU2uPsLNBmncjV6CnsH80C7F9hJteAYPLeUfLA0ChXuZB9ow/exec", {
           method: "POST",
-          body: JSON.stringify({
-            name, phone, email, contactMethod: contactMethods, message
-          }),
-          headers: { "Content-Type": "application/json" }
+          body: formData
         });
 
         const result = await response.json();
@@ -145,9 +150,8 @@
         formMessage.textContent = "Error submitting form. Please try again.";
         formMessage.classList.add("error");
       }
-      var handymanEmail = "paulkigcorder@gmail.com"; // replace with real email
-      var handymanSMS = "18105227172@txt.att.net";     // AT&T email-to-SMS
     });
+
   </script>
 </body>
 </html>
