@@ -295,8 +295,74 @@ h2 { margin: 1rem 0 0.5rem; justify-self: center; }
 .key-dot { width: 8px; height: 8px; border-radius: 999px; background: #cfd8dc; border: 1px solid #90a4ae; cursor: pointer; }
 .key-dot.active { background: var(--secondary-green); border-color: var(--secondary-green); }
 
+
+/* keep arrows left/right on small screens, but hide side images */
 @media (max-width: 780px) {
-  :root { --hero-w: 90%; --side-offset: 60%; --side-scale: 0.6; }
-  .key-gallery { grid-template-columns: 1fr; }
-  .key-gallery .nav { order: 3; justify-self: center; margin-top: 0.5rem; }
+  /* don't collapse to 1 column and don't reorder navs */
+  .key-gallery {
+    grid-template-columns: auto 1fr auto; /* keep 3 columns */
+    align-items: center;
+  }
+
+  /* hide the side preview frames only */
+  .key-frame.prev,
+  .key-frame.next {
+    display: none;
+  }
+
+  /* keep the nav buttons in their left/right columns */
+  .key-gallery .nav {
+    order: 0;           /* reset any previous 'order: 3' */
+    margin-top: 0;      /* no extra spacing */
+    align-self: center; /* vertically center in the column */
+  }
+  /* make the hero image bigger */
+  .key-frame.hero {
+    width: 95% !important;  /* increase from your current % */
+    height: auto !important; /* let height adjust to width */
+  }
 }
+
+/* Lightox section */
+/* -------- Lightbox (site-wide) -------- */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.86);
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+  z-index: 9999; /* above fixed footer & everything */
+}
+.lightbox.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+.lightbox-img {
+  max-width: 95vw;
+  max-height: 92vh;
+  object-fit: contain;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  border-radius: 12px;
+  background: #111; /* nice on transparent PNGs */
+}
+
+/* Close button */
+.lightbox-close {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.14);
+  color: #fff;
+  font-size: 30px;
+  line-height: 1;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+}
+.lightbox-close:hover { background: rgba(255,255,255,0.24); }
