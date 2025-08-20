@@ -321,6 +321,22 @@ h2 { margin: 1rem 0 0.5rem; justify-self: center; }
     width: 95% !important;  /* increase from your current % */
     height: auto !important; /* let height adjust to width */
   }
+  /* Vertically center the hero frame on small screens */
+  .key-frame.hero {
+    top: 50% !important;
+    left: 50% !important;                 /* keep horizontal center */
+    transform: translate(-50%, -50%) scale(1) !important;
+    height: auto !important;
+    max-height: 100%;
+  }
+
+  /* make sure the image itself sizes nicely */
+  .key-frame.hero img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
 }
 
 /* Lightox section */

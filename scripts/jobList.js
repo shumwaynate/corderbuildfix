@@ -4,8 +4,7 @@ const jobs = [
     "description": "This job I did a deck finishing project, applying a new stain and sealant to protect the wood.",
     "folder": "Projects/Deck Finishing",
     "images": [
-      "deck1.JPG",
-      "deck2.JPG",
+      "deck.JPG",
       "deck3.JPG",
       "deck4.JPG"
     ]
