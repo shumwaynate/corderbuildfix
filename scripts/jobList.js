@@ -1,68 +1,40 @@
 const jobs = [
   {
-    "name": "Project 1",
-    "description": "Description for Project 1",
-    "folder": "Projects/Project 1",
+    "name": "Deck Finishing",
+    "description": "This job I did a deck finishing project, applying a new stain and sealant to protect the wood.",
+    "folder": "Projects/Deck Finishing",
     "images": [
-      "1.jpg",
-      "2.jpg",
-      "3.jpg",
-      "4.jpg"
+      "deck1.JPG",
+      "deck2.JPG",
+      "deck3.JPG",
+      "deck4.JPG"
     ]
   },
   {
-    "name": "Project 2",
-    "description": "Description for Project 2",
-    "folder": "Projects/Project 2",
+    "name": "Deck Framing Project",
+    "description": "On this project, I framed a new deck structure, ensuring it was sturdy and level.",
+    "folder": "Projects/Deck Framing Project",
     "images": [
-      "1.jpg",
-      "2.jpg",
-      "3.jpg",
-      "4.jpg"
+      "decking0.JPG",
+      "decking1.JPG"
     ]
   },
   {
-    "name": "Project 4",
-    "description": "Description for Project 4",
-    "folder": "Projects/Project 4",
+    "name": "Kitchen Remodel",
+    "description": "For this kitchen remodel, I updated the cabinetry, countertops, and flooring to create a modern look.",
+    "folder": "Projects/Kitchen Remodel",
     "images": [
-      "1.jpg",
-      "2.jpg",
-      "3.jpg",
-      "4.jpg"
+      "kitchen1.JPG",
+      "kitchen2.JPG"
     ]
   },
   {
-    "name": "Project 5",
-    "description": "Description for Project 5",
-    "folder": "Projects/Project 5",
+    "name": "Mountain Cabin",
+    "description": "For this project, I worked on a mountain cabin, focusing on custom carpentry to finish up the roof as well as doors and windows.",
+    "folder": "Projects/Mountain Cabin",
     "images": [
-      "1.jpg",
-      "2.jpg",
-      "3.jpg",
-      "4.jpg"
-    ]
-  },
-  {
-    "name": "Project 6",
-    "description": "Description for Project 6",
-    "folder": "Projects/Project 6",
-    "images": [
-      "1.jpg",
-      "2.jpg",
-      "3.jpg",
-      "4.jpg"
-    ]
-  },
-  {
-    "name": "Project Paul",
-    "description": "This is a project for Paul. It includes various images related to the project.",
-    "folder": "Projects/Project Paul",
-    "images": [
-      "1.jpg",
-      "3.jpg",
-      "Paul Again.jpg",
-      "Paul.jpg"
+      "woodscabin1.JPG",
+      "woodscabin2.JPG"
     ]
   }
 ];
