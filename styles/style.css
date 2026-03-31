@@ -1,9 +1,11 @@
 :root {
-  --primary-green: #4CAF50;
-  --secondary-green: #388E3C;
-  --light-gray: #f9f9f9;
-  --dark-gray: #333;
-  --footer-h: 60px; /* fixed footer height */
+  --primary-green: #E8741A;   /* main brand orange */
+  --secondary-green: #C85A12; /* darker orange for hover / sidebar / accents */
+  --accent-gold: #F2C14E;      /* warm highlight */
+  --cream: #F7F1E3;            /* soft light tone from logo text */
+  --light-gray: #F8F6F2;       /* page background */
+  --dark-gray: #1F1F1F;        /* dark outlines / footer / contrast */
+  --footer-h: 60px;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -23,14 +25,15 @@ header {
   background-color: var(--primary-green);
   color: white;
   padding: 1rem;
-  display: flex;
+  display: grid;
+  grid-template-columns: 200px 1fr;
   align-items: center;
-  justify-content: left;
-  position: relative; /* not fixed/sticky */
-  z-index: 2;
+  /* justify-content: left; */
+  /* position: relative; not fixed/sticky */
+  /* z-index: 2; */
 }
-.logo { height: 90px; width: auto; padding: 0 40px; }
-.site-title { font-size: 50px; }
+.logo { height: 180px; width: auto; padding: 0 0px; }
+.site-title { font-size: 50px; border: 2px solid var(--accent-gold); padding: 0.2rem 0.6rem; border-radius: 25px; }
 
 /* Fixed footer */
 footer {
@@ -82,6 +85,7 @@ footer .socials a { color: white; margin-left: 1rem; text-decoration: none; }
   text-align: center;
   margin-bottom: 0.5rem;
   transition: background-color 0.3s;
+  border: 2px solid var(--accent-gold);
 }
 .sidebar a:hover { background-color: black; }
 
@@ -117,6 +121,7 @@ h2 { margin: 1rem 0 0.5rem; justify-self: center; }
   text-decoration: none;
   margin-top: 0.5rem;
   border-radius: 5px;
+  border: 2px solid var(--accent-gold);
 }
 
 /* Top nav (mobile only) */
@@ -133,7 +138,9 @@ h2 { margin: 1rem 0 0.5rem; justify-self: center; }
 @media (max-width: 767px) {
   .shell { grid-template-columns: 1fr; }
 
-  header { flex-direction: column; align-items: center; }
+  header { flex-direction: column; align-items: center; display: grid;
+  grid-template-columns: 1fr;}
+  .logo {justify-self: center; padding-bottom: 4px;}
   .top-nav {
     display: flex; flex-direction: column; width: 100%;
     align-items: center; margin-top: 0.5rem;
@@ -142,9 +149,10 @@ h2 { margin: 1rem 0 0.5rem; justify-self: center; }
     background-color: var(--dark-gray); color: white; text-decoration: none;
     padding: 0.5rem 1rem; border-radius: 5px; text-align: center;
     width: 90%; max-width: 300px; font-size: fit-content;
+    border: 2px solid var(--accent-gold);
   }
 
-  .site-title { font-size: 25px; margin-bottom: 0.5rem; }
+  .site-title { font-size: 25px; margin-bottom: 0rem; }
 
   /* Hide sidebar on mobile (as before) */
   .sidebar { display: none; }
@@ -153,7 +161,7 @@ h2 { margin: 1rem 0 0.5rem; justify-self: center; }
 /* Ultra-small */
 @media (max-width: 300px) {
   .top-nav a { font-size: x-small; }
-  .site-title { font-size: 20px; margin-bottom: 0.5rem; }
+  .site-title { font-size: 20px; margin-bottom: 0rem; }
 }
 
 /* Finished Products Section (home) */
@@ -189,6 +197,7 @@ h2 { margin: 1rem 0 0.5rem; justify-self: center; }
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  border: 2px solid var(--accent-gold);
 }
 .see-finished-btn:hover { background-color: var(--secondary-green); }
 
@@ -261,6 +270,7 @@ h2 { margin: 1rem 0 0.5rem; justify-self: center; }
 .key-gallery .nav {
   border: none; background: var(--primary-green); color: #fff;
   font-size: 1.6rem; line-height: 1; padding: 0.5rem 0.8rem; border-radius: 8px; cursor: pointer;
+  border: 2px solid var(--accent-gold);
 }
 .key-gallery .nav:disabled { opacity: 0.5; cursor: default; }
 .key-gallery .nav:focus { outline: 2px solid #00000033; outline-offset: 2px; }
