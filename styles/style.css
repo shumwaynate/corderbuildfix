@@ -382,3 +382,18 @@ h2 { margin: 1rem 0 0.5rem; justify-self: center; }
   backdrop-filter: blur(6px);
 }
 .lightbox-close:hover { background: rgba(255,255,255,0.24); }
+
+
+/* Make each portfolio job use the same carousel style as Favorite Works */
+.job-card.full-width .key-stage {
+  height: clamp(240px, 45vw, 520px);
+}
+
+.job-card.full-width .key-gallery {
+  margin: 1rem 0;
+}
+
+.job-card.full-width .key-gallery .nav {
+  font-size: 1.4rem;
+  padding: 0.45rem 0.75rem;
+}

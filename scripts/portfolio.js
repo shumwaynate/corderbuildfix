@@ -8,61 +8,59 @@ document.addEventListener("DOMContentLoaded", () => {
   // ----- Existing portfolio jobs section (unchanged) -----
   const container = document.getElementById("portfolio-jobs");
 
-  jobs.forEach(job => {
+  jobs.forEach((job, jobIndex) => {
     const card = document.createElement("div");
     card.className = "job-card full-width";
 
     const title = document.createElement("h3");
     title.textContent = job.name;
 
-    const galleryWrapper = document.createElement("div");
-    galleryWrapper.className = "gallery-wrapper";
+    // Reuse the same carousel structure as Favorite Works
+    const gallery = document.createElement("div");
+    gallery.className = "key-gallery";
+    gallery.setAttribute("aria-label", `${job.name} gallery`);
 
-    const imageContainer = document.createElement("div");
-    imageContainer.className = "image-container";
+    const prevBtn = document.createElement("button");
+    prevBtn.className = "nav prev";
+    prevBtn.type = "button";
+    prevBtn.setAttribute("aria-label", "Previous image");
+    prevBtn.textContent = "‹";
 
-    // Create image element and set to first image
-    const img = document.createElement("img");
-    img.className = "gallery-image";
-    let currentIndex = 0;
-    img.src = `images/${job.folder}/${job.images[currentIndex]}`;
+    const stage = document.createElement("div");
+    stage.className = "key-stage";
+    stage.id = `jobStage-${jobIndex}`;
 
-    // Create buttons
-    const prev = document.createElement("button");
-    prev.className = "gallery-nav left";
-    prev.textContent = "◀";
+    const nextBtn = document.createElement("button");
+    nextBtn.className = "nav next";
+    nextBtn.type = "button";
+    nextBtn.setAttribute("aria-label", "Next image");
+    nextBtn.textContent = "›";
 
-    const next = document.createElement("button");
-    next.className = "gallery-nav right";
-    next.textContent = "▶";
+    gallery.appendChild(prevBtn);
+    gallery.appendChild(stage);
+    gallery.appendChild(nextBtn);
 
-    // Button event handlers
-    prev.addEventListener("click", () => {
-      currentIndex = (currentIndex - 1 + job.images.length) % job.images.length;
-      img.src = `images/${job.folder}/${job.images[currentIndex]}`;
-    });
-
-    next.addEventListener("click", () => {
-      currentIndex = (currentIndex + 1) % job.images.length;
-      img.src = `images/${job.folder}/${job.images[currentIndex]}`;
-    });
-
-    imageContainer.appendChild(prev);
-    imageContainer.appendChild(img);
-    imageContainer.appendChild(next);
-
-    galleryWrapper.appendChild(imageContainer);
+    const dotsWrap = document.createElement("div");
+    dotsWrap.className = "key-dots";
+    dotsWrap.id = `jobDots-${jobIndex}`;
 
     const desc = document.createElement("p");
     desc.textContent = job.description;
 
-    // Append to card
     card.appendChild(title);
-    card.appendChild(galleryWrapper);
+    card.appendChild(gallery);
+    card.appendChild(dotsWrap);
     card.appendChild(desc);
 
-    // Append card to container
     container.appendChild(card);
+
+    initJobCardCarousel({
+      stage,
+      dotsWrap,
+      prevBtn,
+      nextBtn,
+      images: job.images.map(imgName => `images/${job.folder}/${imgName}`)
+    });
   });
 });
 
@@ -279,4 +277,156 @@ function shuffle(arr) {
 function joinURL(base, name) {
   if (!base.endsWith("/")) base += "/";
   return base + name.split("/").map(encodeURIComponent).join("/");
+}
+
+function initJobCardCarousel({ stage, dotsWrap, prevBtn, nextBtn, images }) {
+  if (!stage || !prevBtn || !nextBtn || !images || images.length === 0) return;
+
+  let idx = 0;
+  let frames = { prev: null, hero: null, next: null };
+
+  function render() {
+    const n = images.length;
+    const cur = images[idx];
+    const prv = images[(idx - 1 + n) % n];
+    const nxt = images[(idx + 1) % n];
+
+    stage.innerHTML = "";
+
+    const prevEl = makeFrame("prev", prv);
+    const heroEl = makeFrame("hero", cur);
+    const nextEl = makeFrame("next", nxt);
+
+    prevEl.addEventListener("click", goPrev);
+    nextEl.addEventListener("click", goNext);
+
+    stage.appendChild(prevEl);
+    stage.appendChild(heroEl);
+    stage.appendChild(nextEl);
+
+    frames = { prev: prevEl, hero: heroEl, next: nextEl };
+
+    layoutFrames();
+    buildDots();
+  }
+
+  function makeFrame(role, src) {
+    const frame = document.createElement("figure");
+    frame.className = "key-frame " + role;
+
+    frame.style.position = "absolute";
+    frame.style.top = "0";
+
+    if (role === "next") {
+      frame.style.right = "50%";
+      frame.style.left = "auto";
+      frame.style.transform = "translateX(50%)";
+    } else {
+      frame.style.left = "50%";
+      frame.style.right = "auto";
+      frame.style.transform = "translateX(-50%)";
+    }
+
+    frame.style.margin = "0";
+    frame.style.overflow = "hidden";
+    frame.style.borderRadius = "12px";
+    frame.style.willChange = "transform,width,height";
+
+    const img = document.createElement("img");
+    img.src = src;
+    img.alt = "Project image";
+    img.className = "gallery-image"; // keeps lightbox compatibility
+    img.loading = "lazy";
+    img.decoding = "async";
+    img.style.objectFit = role === "hero" ? "contain" : "cover";
+    img.style.width = "100%";
+    img.style.height = "100%";
+    img.style.display = "block";
+    img.style.borderRadius = "12px";
+    img.style.opacity = "0";
+    img.style.transition = "opacity 180ms ease";
+
+    if (role !== "hero") {
+      img.style.filter = "blur(1.5px) brightness(0.92)";
+    }
+
+    img.addEventListener("load", () => {
+      img.style.opacity = "1";
+    });
+
+    frame.appendChild(img);
+    return frame;
+  }
+
+  function layoutFrames() {
+    if (!frames.hero) return;
+
+    const stageW = stage.clientWidth;
+    const stageH = stage.clientHeight;
+
+    const DESIRED_HERO_RATIO = 0.78;
+    const MAX_HERO_W = 950;
+    const SIDE_SCALE = 0.68;
+    const GUTTER = 36;
+
+    let heroW = Math.min(Math.round(stageW * DESIRED_HERO_RATIO), MAX_HERO_W);
+    const visibilityCap = Math.floor((stageW - 2 * GUTTER) / (1 + SIDE_SCALE));
+    heroW = Math.min(heroW, visibilityCap);
+
+    const sideW = Math.round(heroW * SIDE_SCALE);
+    const heroH = stageH;
+    const sideH = stageH;
+
+    frames.hero.style.width = heroW + "px";
+    frames.hero.style.height = heroH + "px";
+    frames.hero.style.zIndex = 3;
+    frames.hero.style.opacity = 1;
+
+    frames.prev.style.width = sideW + "px";
+    frames.prev.style.height = sideH + "px";
+    frames.next.style.width = sideW + "px";
+    frames.next.style.height = sideH + "px";
+
+    const offset = Math.round(heroW / 2 + GUTTER + sideW / 2);
+
+    frames.prev.style.transform = `translateX(${-offset}px)`;
+    frames.next.style.transform = `translateX(${offset}px)`;
+
+    frames.prev.style.zIndex = 2;
+    frames.next.style.zIndex = 2;
+    frames.prev.style.opacity = 1;
+    frames.next.style.opacity = 1;
+  }
+
+  function buildDots() {
+    dotsWrap.innerHTML = "";
+    if (images.length <= 1) return;
+
+    images.forEach((_, i) => {
+      const dot = document.createElement("button");
+      dot.className = "key-dot" + (i === idx ? " active" : "");
+      dot.type = "button";
+      dot.addEventListener("click", () => {
+        idx = i;
+        render();
+      });
+      dotsWrap.appendChild(dot);
+    });
+  }
+
+  function goPrev() {
+    idx = (idx - 1 + images.length) % images.length;
+    render();
+  }
+
+  function goNext() {
+    idx = (idx + 1) % images.length;
+    render();
+  }
+
+  prevBtn.addEventListener("click", goPrev);
+  nextBtn.addEventListener("click", goNext);
+
+  window.addEventListener("resize", layoutFrames);
+  render();
 }
