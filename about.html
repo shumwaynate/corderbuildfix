@@ -1,70 +1,593 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About the Builder - Corder Build & Fix</title>
-  <link rel="stylesheet" href="styles/style.css" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <title>About the Builder | Corder Build &amp; Fix</title>
+
+  <meta
+    name="description"
+    content="Meet Paul, the builder behind Corder Build & Fix. Learn about his experience with repairs, renovations, custom carpentry, new-home construction, and specialized ICF builds."
+  />
+
+  <link
+    rel="stylesheet"
+    href="styles/teststyle.css"
+  />
+
+  <script
+    defer
+    src="scripts/testhome.js"
+  ></script>
 </head>
+
 <body>
-  <header>
-    <img src="images/CorderColor.PNG" alt="Corder Build & Fix Logo" class="logo" />
-    <h1 class="site-title">Corder Build & Fix</h1>
-    <nav class="top-nav">
-      <a href="index.html">Home</a>
-      <a href="schedule.html">Schedule & Contact</a>
-      <a href="portfolio.html">Portfolio</a>
-      <a href="about.html">About the Builder</a>
-    </nav>
-  </header>
+  <a
+    class="skip-link"
+    href="#main-content"
+  >
+    Skip to main content
+  </a>
 
-  <div class="shell">
-    <aside class="sidebar">
-      <div class="sidebar-inner">
-        <a href="index.html">Home</a>
-        <a href="schedule.html">Schedule & Contact</a>
-        <a href="portfolio.html">Portfolio</a>
-        <a href="about.html">About the Builder</a>
+  <!-- Top information bar -->
+  <div class="utility-bar">
+    <div class="site-width utility-inner">
+      <p>
+        Custom homes, specialized ICF construction, renovations, and repairs
+      </p>
+
+      <div class="utility-links">
+        <a href="schedule.html">
+          Request a Quote
+        </a>
+
+        <a href="portfolio.html">
+          View Our Work
+        </a>
       </div>
-    </aside>
-
-    <main>
-      <h2>About the Builder</h2>
-      <section class="builder-profile">
-        <img src="images/paul.jpg" alt="Photo of Paul" style="width:200px; border-radius: 12px;" />
-        <div>
-          <h3>Paul - Lead Handyman</h3>
-          <p>Paul has over 10 years of experience in general construction, home repairs, and custom carpentry. He takes pride in delivering honest, detail-focused work and has built a reputation for reliability and high-quality results. Whether it's fixing a leaky faucet or building a backyard deck, Paul approaches each job with care and craftsmanship.</p>
-          <br><br><br><br><br><br><br><br><br><br><br> 
-        </div>
-      </section>
-
-      <div class="footer-space"></div>
-    </main>
+    </div>
   </div>
 
-  <footer>
-    <p>&copy; 2025 Corder Build & Fix</p>
-    <div class="socials">
-      <a href="https://www.facebook.com/people/Corder-Build-and-Fix/61576862280071/?_rdr" target="_blank" rel="noopener">Facebook</a>
-      <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://twitter.com" target="_blank" rel="noopener">Twitter</a>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="site-width header-inner">
+      <a
+        class="brand"
+        href="index.html"
+        aria-label="Corder Build and Fix home"
+      >
+        <span class="brand-name">
+          CORDER
+        </span>
+
+        <span
+          class="brand-rule"
+          aria-hidden="true"
+        ></span>
+
+        <span class="brand-subtitle">
+          BUILD &amp; FIX
+        </span>
+      </a>
+
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="primary-nav"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+
+        <span class="sr-only">
+          Open navigation
+        </span>
+      </button>
+
+      <nav
+        id="primary-nav"
+        class="primary-nav"
+        aria-label="Primary navigation"
+      >
+        <a href="index.html">
+          Home
+        </a>
+
+        <a
+          class="active"
+          href="about.html"
+        >
+          About
+        </a>
+
+        <a href="index.html#services">
+          Services
+        </a>
+
+        <a href="portfolio.html">
+          Projects
+        </a>
+
+        <a
+          class="nav-cta"
+          href="schedule.html"
+        >
+          Get a Free Quote
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- Page hero -->
+    <section class="page-hero builder-page-hero">
+      <div class="site-width page-hero-inner">
+        <p class="eyebrow">
+          About the builder
+        </p>
+
+        <h1>
+          Meet the builder behind Corder Build &amp; Fix.
+        </h1>
+
+        <p class="page-hero-copy">
+          Paul brings hands-on experience, practical problem-solving,
+          and careful craftsmanship to repairs, renovations, custom homes,
+          and specialized ICF construction.
+        </p>
+
+        <div class="page-hero-actions">
+          <a
+            class="button button-primary"
+            href="schedule.html"
+          >
+            Talk With Paul
+          </a>
+
+          <a
+            class="button button-outline-light"
+            href="portfolio.html"
+          >
+            View His Work
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Builder profile -->
+    <section class="section builder-profile-section">
+      <div class="site-width builder-profile-grid">
+        <div class="builder-profile-visual">
+          <div
+            class="builder-photo-placeholder"
+            role="img"
+            aria-label="Builder photo coming soon"
+          ></div>
+
+          <div class="builder-years-card">
+            <strong>
+              10+
+            </strong>
+
+            <span>
+              Years of hands-on construction experience
+            </span>
+          </div>
+        </div>
+
+        <div class="builder-profile-copy">
+          <p class="eyebrow eyebrow-dark">
+            Paul — Lead Builder
+          </p>
+
+          <h2>
+            Honest work, careful planning, and craftsmanship that lasts.
+          </h2>
+
+          <p>
+            Paul has more than ten years of experience in general construction,
+            home repairs, renovations, exterior projects, and custom carpentry.
+            He takes pride in providing dependable work and straightforward
+            communication from the first conversation through the finished
+            project.
+          </p>
+
+          <p>
+            His experience covers projects of many sizes. That may mean
+            repairing a door, rebuilding a deck, finishing custom trim,
+            updating a kitchen, or organizing the many stages involved in
+            constructing a complete new home.
+          </p>
+
+          <p>
+            Paul also focuses on new-home construction using Insulated
+            Concrete Forms, commonly called ICF. These builds combine
+            reinforced concrete and continuous insulation to create strong,
+            efficient, and comfortable homes.
+          </p>
+
+          <p>
+            No matter the size of the job, his goal remains the same:
+            understand what the customer needs, complete the work carefully,
+            and leave behind a result they can feel confident about.
+          </p>
+
+          <a
+            class="text-link"
+            href="schedule.html"
+          >
+            Start a conversation
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Builder specialties -->
+    <section class="section builder-skills-section">
+      <div class="site-width">
+        <div class="builder-section-heading">
+          <p class="eyebrow eyebrow-dark">
+            Experience and specialties
+          </p>
+
+          <h2>
+            From everyday fixes to complete new homes.
+          </h2>
+
+          <p>
+            Paul’s broad construction background allows Corder Build &amp; Fix
+            to help with smaller home projects as well as larger, long-term
+            builds.
+          </p>
+        </div>
+
+        <div class="builder-skills-grid">
+          <article class="builder-skill-card">
+            <span class="builder-skill-number">
+              01
+            </span>
+
+            <h3>
+              Repairs &amp; Improvements
+            </h3>
+
+            <p>
+              Practical help with doors, trim, fixtures, drywall,
+              maintenance, installations, and the repairs that keep a home
+              working properly.
+            </p>
+          </article>
+
+          <article class="builder-skill-card">
+            <span class="builder-skill-number">
+              02
+            </span>
+
+            <h3>
+              Renovations &amp; Carpentry
+            </h3>
+
+            <p>
+              Kitchen improvements, decks, exterior work, custom carpentry,
+              finish details, and upgrades that make existing spaces more
+              useful.
+            </p>
+          </article>
+
+          <article class="builder-skill-card featured-builder-skill">
+            <span class="builder-skill-number">
+              03
+            </span>
+
+            <h3>
+              Custom Homes &amp; ICF Builds
+            </h3>
+
+            <p>
+              New-home construction with a focus on ICF wall systems designed
+              for structural strength, continuous insulation, energy
+              efficiency, and lasting comfort.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Builder approach -->
+    <section class="section builder-approach-section">
+      <div class="site-width builder-approach-grid">
+        <div class="builder-approach-heading">
+          <p class="eyebrow">
+            Paul’s approach
+          </p>
+
+          <h2>
+            A straightforward way of working.
+          </h2>
+
+          <p>
+            Construction projects go more smoothly when expectations,
+            recommendations, and next steps are explained clearly.
+          </p>
+
+          <a
+            class="button button-cream"
+            href="schedule.html"
+          >
+            Discuss Your Project
+          </a>
+        </div>
+
+        <div class="builder-approach-list">
+          <article>
+            <span>
+              01
+            </span>
+
+            <div>
+              <h3>
+                Listen first
+              </h3>
+
+              <p>
+                Every project begins by understanding the customer’s needs,
+                priorities, concerns, and plans for the space.
+              </p>
+            </div>
+          </article>
+
+          <article>
+            <span>
+              02
+            </span>
+
+            <div>
+              <h3>
+                Recommend practical solutions
+              </h3>
+
+              <p>
+                Options are considered based on the condition of the property,
+                the scope of the work, and the desired result.
+              </p>
+            </div>
+          </article>
+
+          <article>
+            <span>
+              03
+            </span>
+
+            <div>
+              <h3>
+                Communicate clearly
+              </h3>
+
+              <p>
+                Customers should understand what work is being completed,
+                what comes next, and when decisions need to be made.
+              </p>
+            </div>
+          </article>
+
+          <article>
+            <span>
+              04
+            </span>
+
+            <div>
+              <h3>
+                Finish with care
+              </h3>
+
+              <p>
+                Details, durability, cleanup, and the overall finished result
+                all matter before a project is considered complete.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Builder values -->
+    <section class="section builder-values-section">
+      <div class="site-width">
+        <div class="builder-section-heading centered-heading">
+          <p class="eyebrow eyebrow-dark">
+            What matters on every job
+          </p>
+
+          <h2>
+            The same standards, whether the project is large or small.
+          </h2>
+
+          <p>
+            Every project is approached with respect for the customer,
+            the property, and the long-term quality of the finished work.
+          </p>
+        </div>
+
+        <div class="builder-values-grid">
+          <article>
+            <h3>
+              Reliability
+            </h3>
+
+            <p>
+              Customers deserve a builder who communicates, follows through,
+              and takes their project seriously.
+            </p>
+          </article>
+
+          <article>
+            <h3>
+              Respect
+            </h3>
+
+            <p>
+              The customer, their property, and the surrounding work area are
+              treated with care throughout the project.
+            </p>
+          </article>
+
+          <article>
+            <h3>
+              Attention to Detail
+            </h3>
+
+            <p>
+              Small details affect how a project looks, functions, and holds
+              up over time.
+            </p>
+          </article>
+
+          <article>
+            <h3>
+              Durability
+            </h3>
+
+            <p>
+              Materials and building methods are selected with the long-term
+              strength and usefulness of the finished work in mind.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Builder statement -->
+    <section class="section builder-statement-section">
+      <div class="site-width builder-statement-inner">
+        <p class="eyebrow eyebrow-dark">
+          From the builder
+        </p>
+
+        <blockquote>
+          “Whether I am completing a small repair or helping build an entire
+          home, I want the customer to feel confident that the work was
+          completed carefully and honestly.”
+
+          <cite>
+            Paul — Corder Build &amp; Fix
+          </cite>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- Contact call to action -->
+    <section class="contact-cta">
+      <div class="site-width contact-cta-inner">
+        <div>
+          <p class="eyebrow">
+            Have a project in mind?
+          </p>
+
+          <h2>
+            Talk directly with the builder about what your home needs.
+          </h2>
+        </div>
+
+        <a
+          class="button button-cream"
+          href="schedule.html"
+        >
+          Schedule &amp; Contact
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="site-width footer-grid">
+      <div>
+        <a
+          class="brand footer-brand"
+          href="index.html"
+          aria-label="Corder Build and Fix home"
+        >
+          <span class="brand-name">
+            CORDER
+          </span>
+
+          <span
+            class="brand-rule"
+            aria-hidden="true"
+          ></span>
+
+          <span class="brand-subtitle">
+            BUILD &amp; FIX
+          </span>
+        </a>
+
+        <p>
+          Custom homes, specialized ICF construction, renovations,
+          carpentry, repairs, and practical improvements completed with care.
+        </p>
+      </div>
+
+      <div>
+        <h3>
+          Explore
+        </h3>
+
+        <a href="about.html">
+          About
+        </a>
+
+        <a href="index.html#services">
+          Services
+        </a>
+
+        <a href="portfolio.html">
+          Portfolio
+        </a>
+
+        <a href="schedule.html">
+          Schedule &amp; Contact
+        </a>
+      </div>
+
+      <div>
+        <h3>
+          Connect
+        </h3>
+
+        <a
+          href="https://www.facebook.com/people/Corder-Build-and-Fix/61576862280071/?_rdr"
+          target="_blank"
+          rel="noopener"
+        >
+          Facebook
+        </a>
+
+        <a href="schedule.html">
+          Request a Quote
+        </a>
+      </div>
+    </div>
+
+    <div class="site-width footer-bottom">
+      <p>
+        &copy;
+        <span id="current-year">2026</span>
+        Corder Build &amp; Fix
+      </p>
+
+      <p>
+        Built right. Built to last.
+      </p>
     </div>
   </footer>
-
-  <script>
-    const footer = document.querySelector("footer");
-    function updateFooterVisibility() {
-      const scrollTop = window.scrollY;
-      const windowHeight = window.innerHeight;
-      const bodyHeight = document.body.scrollHeight;
-      const atBottom = scrollTop + windowHeight >= bodyHeight - 10;
-      if (atBottom) footer.classList.remove("hidden-footer");
-      else footer.classList.add("hidden-footer");
-    }
-    window.addEventListener("scroll", updateFooterVisibility);
-    window.addEventListener("resize", updateFooterVisibility);
-    document.addEventListener("DOMContentLoaded", updateFooterVisibility);
-  </script>
 </body>
 </html>
+```

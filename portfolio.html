@@ -2,86 +2,361 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio - Corder Build & Fix</title>
-  <link rel="stylesheet" href="styles/style.css" />
-  <script defer src="scripts/jobList.js"></script>
-  <script defer src="scripts/portfolio.js"></script>
-  <script defer src="scripts/lightbox.js"></script>
 
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <title>Portfolio | Corder Build &amp; Fix</title>
+
+  <meta
+    name="description"
+    content="Explore custom construction, ICF builds, renovations, decks, carpentry, repairs, and completed projects from Corder Build & Fix."
+  />
+
+  <link
+    rel="stylesheet"
+    href="styles/teststyle.css"
+  />
+
+  <script
+    defer
+    src="scripts/jobList.js"
+  ></script>
+
+  <!-- Shared navigation and automatic footer year -->
+  <script
+    defer
+    src="scripts/testhome.js"
+  ></script>
+
+  <!-- Portfolio galleries -->
+  <script
+    defer
+    src="scripts/portfolio.js"
+  ></script>
+
+  <!-- Full-screen image viewer -->
+  <script
+    defer
+    src="scripts/lightbox.js"
+  ></script>
 </head>
+
 <body>
-  <header>
-    <img src="images/CorderColor.PNG" alt="Corder Build & Fix Logo" class="logo" />
-    <h1 class="site-title">Corder Build & Fix</h1>
-    <nav class="top-nav">
-      <a href="index.html">Home</a>
-      <a href="schedule.html">Schedule & Contact</a>
-      <a href="portfolio.html">Portfolio</a>
-      <a href="about.html">About the Builder</a>
-    </nav>
-  </header>
+  <a
+    class="skip-link"
+    href="#main-content"
+  >
+    Skip to main content
+  </a>
 
-  <div class="shell">
-    <aside class="sidebar">
-      <div class="sidebar-inner">
-        <a href="index.html">Home</a>
-        <a href="schedule.html">Schedule & Contact</a>
-        <a href="portfolio.html">Portfolio</a>
-        <a href="about.html">About the Builder</a>
+  <!-- Top information bar -->
+  <div class="utility-bar">
+    <div class="site-width utility-inner">
+      <p>
+        Custom homes, specialized ICF construction, renovations, and repairs
+      </p>
+
+      <div class="utility-links">
+        <a href="schedule.html">Request a Quote</a>
+        <a href="portfolio.html">View Our Work</a>
       </div>
-    </aside>
-
-    <main>
-      <h2>Portfolio</h2>
-
-      <section id="favorite-works" class="card card-green-outline">
-        <h2>Here are some of our favorite projects!</h2>
-
-        <div class="key-gallery" aria-label="Key pictures gallery">
-          <button class="nav prev" aria-label="Previous image" title="Previous">‹</button>
-          <div class="key-stage" id="keyStage" aria-live="polite"></div>
-          <button class="nav next" aria-label="Next image" title="Next">›</button>
-        </div>
-
-        <div class="key-dots" id="keyDots" aria-hidden="true"></div>
-      </section>
-
-      <h2>Here are some of the past jobs that we have done!</h2>
-      <div id="portfolio-jobs"></div>
-
-      <section>
-        <h2>Schedule a Consultation</h2>
-        <p>Have a project in mind? Let’s talk!</p>
-        <a class="button" href="schedule.html">Schedule Now</a>
-      </section>
-
-      <div class="footer-space"></div>
-    </main>
+    </div>
   </div>
 
-  <footer>
-    <p>&copy; 2025 Corder Build & Fix</p>
-    <div class="socials">
-      <a href="https://www.facebook.com/people/Corder-Build-and-Fix/61576862280071/?_rdr" target="_blank" rel="noopener">Facebook</a>
-      <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://twitter.com" target="_blank" rel="noopener">Twitter</a>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="site-width header-inner">
+      <a
+        class="brand"
+        href="index.html"
+        aria-label="Corder Build and Fix home"
+      >
+        <span class="brand-name">CORDER</span>
+
+        <span
+          class="brand-rule"
+          aria-hidden="true"
+        ></span>
+
+        <span class="brand-subtitle">
+          BUILD &amp; FIX
+        </span>
+      </a>
+
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="primary-nav"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+
+        <span class="sr-only">
+          Open navigation
+        </span>
+      </button>
+
+      <nav
+        id="primary-nav"
+        class="primary-nav"
+        aria-label="Primary navigation"
+      >
+        <a href="index.html">Home</a>
+
+        <a href="about.html">About</a>
+
+        <a href="index.html#services">
+          Services
+        </a>
+
+        <a
+          class="active"
+          href="portfolio.html"
+        >
+          Projects
+        </a>
+
+        <a
+          class="nav-cta"
+          href="schedule.html"
+        >
+          Get a Free Quote
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- Portfolio introduction -->
+    <section class="page-hero portfolio-page-hero">
+      <div class="site-width page-hero-inner">
+        <p class="eyebrow">
+          Our work
+        </p>
+
+        <h1>
+          Projects built with strength, care, and attention to detail.
+        </h1>
+
+        <p class="page-hero-copy">
+          Explore custom construction, specialized ICF work, renovations,
+          decks, carpentry, and practical repairs completed by Corder
+          Build &amp; Fix.
+        </p>
+
+        <div class="page-hero-actions">
+          <a
+            class="button button-primary"
+            href="schedule.html"
+          >
+            Start Your Project
+          </a>
+
+          <a
+            class="button button-outline-light"
+            href="#all-projects"
+          >
+            Browse Projects
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Pictures gallery -->
+    <section
+      id="favorite-works"
+      class="section portfolio-featured-section"
+    >
+      <div class="site-width">
+        <div class="portfolio-section-heading">
+          <div>
+            <p class="eyebrow eyebrow-dark">
+              Featured craftsmanship
+            </p>
+
+            <h2>
+              A closer look at some of our favorite finished work.
+            </h2>
+          </div>
+
+          <!-- <p>
+            These featured images are loaded automatically from the
+            Key Pictures folder.
+          </p> -->
+        </div>
+
+        <div class="portfolio-gallery-card">
+          <div
+            class="key-gallery"
+            aria-label="Featured projects gallery"
+          >
+            <button
+              class="nav prev"
+              type="button"
+              aria-label="Show previous featured image"
+              title="Previous image"
+            >
+              ‹
+            </button>
+
+            <div
+              class="key-stage"
+              id="keyStage"
+              aria-live="polite"
+            ></div>
+
+            <button
+              class="nav next"
+              type="button"
+              aria-label="Show next featured image"
+              title="Next image"
+            >
+              ›
+            </button>
+          </div>
+
+          <div
+            class="key-dots"
+            id="keyDots"
+            aria-label="Featured image selections"
+          ></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- All project folders -->
+    <section
+      id="all-projects"
+      class="section portfolio-projects-section"
+    >
+      <div class="site-width">
+        <div class="portfolio-section-heading projects-list-heading">
+          <div>
+            <p class="eyebrow eyebrow-dark">
+              Completed projects
+            </p>
+
+            <!-- <h2>
+              See the details behind each project.
+            </h2> -->
+          </div>
+
+          <!-- <p>
+            Browse project galleries featuring the first stages, finished
+            details, and craftsmanship that went into each job.
+          </p> -->
+        </div>
+
+        <!-- Filled automatically by portfolio.js -->
+        <div
+          id="portfolio-jobs"
+          aria-live="polite"
+        ></div>
+      </div>
+    </section>
+
+    <!-- Consultation call to action -->
+    <section class="contact-cta">
+      <div class="site-width contact-cta-inner">
+        <div>
+          <p class="eyebrow">
+            Planning something new?
+          </p>
+
+          <h2>
+            Let’s talk about your new home, renovation, or repair project.
+          </h2>
+        </div>
+
+        <a
+          class="button button-cream"
+          href="schedule.html"
+        >
+          Request a Quote
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="site-width footer-grid">
+      <div>
+        <a
+          class="brand footer-brand"
+          href="index.html"
+          aria-label="Corder Build and Fix home"
+        >
+          <span class="brand-name">CORDER</span>
+
+          <span
+            class="brand-rule"
+            aria-hidden="true"
+          ></span>
+
+          <span class="brand-subtitle">
+            BUILD &amp; FIX
+          </span>
+        </a>
+
+        <p>
+          Custom homes, specialized ICF construction, renovations,
+          carpentry, repairs, and practical improvements completed with care.
+        </p>
+      </div>
+
+      <div>
+        <h3>Explore</h3>
+
+        <a href="about.html">About</a>
+
+        <a href="index.html#services">
+          Services
+        </a>
+
+        <a href="portfolio.html">
+          Portfolio
+        </a>
+
+        <a href="schedule.html">
+          Schedule &amp; Contact
+        </a>
+      </div>
+
+      <div>
+        <h3>Connect</h3>
+
+        <a
+          href="https://www.facebook.com/people/Corder-Build-and-Fix/61576862280071/?_rdr"
+          target="_blank"
+          rel="noopener"
+        >
+          Facebook
+        </a>
+
+        <a href="schedule.html">
+          Request a Quote
+        </a>
+      </div>
+    </div>
+
+    <div class="site-width footer-bottom">
+      <p>
+        &copy;
+        <span id="current-year">2026</span>
+        Corder Build &amp; Fix
+      </p>
+
+      <p>
+        Built right. Built to last.
+      </p>
     </div>
   </footer>
-
-  <script>
-    const footer = document.querySelector("footer");
-    function updateFooterVisibility() {
-      const scrollTop = window.scrollY;
-      const windowHeight = window.innerHeight;
-      const bodyHeight = document.body.scrollHeight;
-      const atBottom = scrollTop + windowHeight >= bodyHeight - 10;
-      if (atBottom) footer.classList.remove("hidden-footer");
-      else footer.classList.add("hidden-footer");
-    }
-    window.addEventListener("scroll", updateFooterVisibility);
-    window.addEventListener("resize", updateFooterVisibility);
-    document.addEventListener("DOMContentLoaded", updateFooterVisibility);
-  </script>
 </body>
 </html>
+```
